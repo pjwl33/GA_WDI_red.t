@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
+    @posts = @user.posts
   end
 
   def new
@@ -26,12 +27,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
+    @user.update user_params
     redirect_to @user
   end
 
   def destroy
     @user = User.find params[:id]
     @user.destroy
+    redirect_to root_path
   end
 
   private

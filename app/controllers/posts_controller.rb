@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :require_authentication, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all.order_by(updated_at: :asc )
+    @posts = Post.all.order(updated_at: :asc )
     @show_link = true
   end
 
